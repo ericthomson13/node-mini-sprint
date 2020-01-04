@@ -11,14 +11,12 @@ $(document).ready(function() {
   });
 
   function getQuote(){
-
     //YOUR CODE HERE, Add a GET request
-
+		$.get()
   }
 
   function addQuote(quote){
-    
     //YOUR CODE HERE, Add a POST request
-
+		$.post()
   }
 });
