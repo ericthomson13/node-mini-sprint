@@ -37,20 +37,33 @@ const handleRequest = function(req, res) {
   }
 
   // TODO: GET ONE
-  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "FILL ME IN") {
+  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
     //YOUR CODE HERE
-
+    // return quotes[getRandomInt]
+    let random = getRandomInt(0, quotes.length - 1);
+    console.log(req)
+    res.end(quotes[random]);
   }
+
   // TODO: POST/CREATE
-  else if ((req.url == 'FILL ME IN' || req.url == 'FILL ME IN') && req.method == "FILL ME IN") {
+  else if ((req.url == '/quote/' || req.url == '/quote') && req.method == "POST") {
     //YOUR CODE HERE
+    // should add a submitted quote from client to the existing quotes array in server
+    // quotes.push(req.quote);
+    req.on('data', function (data) {
+      console.log('chunk: ' + data)
+      quotes.push(data);
+      console.log('from data: ' + quotes)
+      res.end(data);
+    })
+
+    
   }
 
 //CATCH ALL ROUTE
   else {
     res.writeHead(404,headers);
     res.end('Page not found');
-
   }
 }
 
